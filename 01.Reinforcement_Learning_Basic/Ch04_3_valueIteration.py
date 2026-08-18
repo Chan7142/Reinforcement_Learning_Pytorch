@@ -1,6 +1,6 @@
 import random, numpy as np
 from ray import state
-from Ch02_2_policyIteration import SimpleEnvironment, policy, policy_evaluation
+from Ch04_2_policyIteration import SimpleEnvironment, policy, policy_evaluation
 env = SimpleEnvironment()
 
 
