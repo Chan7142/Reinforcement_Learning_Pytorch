@@ -1,4 +1,4 @@
-# 강화학습 공부 및 실습
+# 강화학습 공부 및 Python(pytorch) 실습
 
 ## 1. Reinforcement Learning Basic
 ### 강화학습 기초 (진행중)
