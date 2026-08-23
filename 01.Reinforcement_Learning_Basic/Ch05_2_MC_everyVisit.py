@@ -47,7 +47,7 @@ def stochastic_policy(state):
 
 import collections
 
-def mc_first_visit_stateValue(num_episodes):
+def mc_every_visit_stateValue(num_episodes):
     returns_sum = collections.defaultdict(float)
     returns_count = collections.defaultdict(float)
     V = collections.defaultdict(float)
@@ -63,19 +63,19 @@ def mc_first_visit_stateValue(num_episodes):
             state = next_state
 
         G = 0
-        visited_states = set()
+        # visited_states = set()
 
         for t in range(len(episode_data)-1,-1,-1):
             state, action, reward = episode_data[t]
             G = gamma * G + reward
 
-            if state not in visited_states:
-                visited_states.add(state)
-                returns_sum[state] += G
-                returns_count[state] += 1
-                V[state] = returns_sum[state] / returns_count[state]
+            # if state not in visited_states:
+                # visited_states.add(state)
+            returns_sum[state] += G
+            returns_count[state] += 1
+            V[state] = returns_sum[state] / returns_count[state]
     return V
-V = mc_first_visit_stateValue(num_episodes = 1000)
+V = mc_every_visit_stateValue(num_episodes = 1000)
 
 print("상태 가치 함수 V(s):")
 for state in sorted(V.keys()):
@@ -83,7 +83,7 @@ for state in sorted(V.keys()):
 
 #처음방문 상태행동가치
 
-def mc_first_visit_stateActionValue(num_episodes, gamma = 0.5):
+def mc_every_visit_stateActionValue(num_episodes, gamma = 0.5):
     returns_sum = collections.defaultdict(float)
     returns_count = collections.defaultdict(float)
     Q = collections.defaultdict(float)
@@ -97,21 +97,21 @@ def mc_first_visit_stateActionValue(num_episodes, gamma = 0.5):
             episode_data.append((state, action, reward))
             state = next_state
 
-        states_actions_visited = set() ## 상태가치와 다름
+        # states_actions_visited = set() ## 상태가치와 다름
         G = 0
         for t in range(len(episode_data)-1,-1,-1):
             state, action, reward = episode_data[t]
             G = gamma * G + reward
             sa = (state, action)
-            if sa not in states_actions_visited:##
-                states_actions_visited.add(sa)
-                returns_sum[sa] += G
-                returns_count[sa] += 1
-                Q[sa] = returns_sum[sa] / returns_count[sa]
+            # if sa not in states_actions_visited:##
+                # states_actions_visited.add(sa)
+            returns_sum[sa] += G
+            returns_count[sa] += 1
+            Q[sa] = returns_sum[sa] / returns_count[sa]
     return Q
 
 num_episodes = 10000
-Q = mc_first_visit_stateActionValue(num_episodes)
+Q = mc_every_visit_stateActionValue(num_episodes)
 
 # for state_action, value in sorted(Q.items()):
 #     print(f"state-Action : {state_action}, Q-Value: {value:.2f}")
@@ -134,7 +134,7 @@ def epsilon_greedy_policy(state, Q, epsilon = 0.1): # 행동 정책
     else:
         return max(actions, key = lambda action: Q[(state, action)])
 
-def mc_first_visit_control(num_episodes, epsilon = 0.1, gamma = 0.5):
+def mc_every_visit_control(num_episodes, epsilon = 0.1, gamma = 0.5):
     Q = collections.defaultdict(float)
     returns_sum = collections.defaultdict(float)
     returns_count = collections.defaultdict(int)
@@ -151,16 +151,16 @@ def mc_first_visit_control(num_episodes, epsilon = 0.1, gamma = 0.5):
             episode_data.append((state, action, reward))
             state = next_state
         G = 0
-        states_actions_visited = set()
+        # states_actions_visited = set()
         for t in range(len(episode_data)-1, -1, -1):
             state, action, reward = episode_data[t]
             G = gamma * G + reward
             sa = (state, action)
-            if sa not in states_actions_visited:
-                states_actions_visited.add(sa)
-                returns_sum[sa] += G
-                returns_count[sa] += 1
-                Q[sa] = returns_sum[sa]/returns_count[sa]
+            # if sa not in states_actions_visited:
+                # states_actions_visited.add(sa)
+            returns_sum[sa] += G
+            returns_count[sa] += 1
+            Q[sa] = returns_sum[sa]/returns_count[sa]
 
     for state in policy.keys():
         policy[state] = max(valid_actions(state, env),
@@ -168,7 +168,7 @@ def mc_first_visit_control(num_episodes, epsilon = 0.1, gamma = 0.5):
     return policy, Q
 
 num_episodes = 10000
-policy, Q = mc_first_visit_control(num_episodes)
+policy, Q = mc_every_visit_control(num_episodes)
 
 for state, action in sorted(policy.items()):
     print(f"State: {state}, Optimal Action {action}")
