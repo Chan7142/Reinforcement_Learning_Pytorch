@@ -19,11 +19,11 @@
 
 ---
 
-<<<<<<< HEAD
+
 ## 2. Reinforcement Learning Advanced
 ### 강화학습 심화 (예정)
 ### 교재: (강화학습 시리즈 3) 강화학습 기본 완성과 Pytorch | 추상목 지음
 =======
 ## 이하 예정
->>>>>>> 0b62edceebb79b3df0b17f4a8942919325642279
+
 
