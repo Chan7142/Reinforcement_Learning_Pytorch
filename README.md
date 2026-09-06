@@ -19,11 +19,19 @@
 
 ---
 
-<<<<<<< HEAD
+
 ## 2. Reinforcement Learning Advanced
 ### 강화학습 심화 (예정)
 ### 교재: (강화학습 시리즈 3) 강화학습 기본 완성과 Pytorch | 추상목 지음
-=======
-## 이하 예정
->>>>>>> 0b62edceebb79b3df0b17f4a8942919325642279
+
+### --목차--
+- 제1장 : REINFORCE-Monte Carlo Policy Gradient
+- 제2장 : REINFORCE-Baseline
+- 제3장 : Advantage Actor Critic(A2C)
+- 제4장 : Asynchronous Advantage Actor Critic(A3C)
+- 제5장 : Deep Deterministic Policy Gradient(DDPG)
+- 제6장 : Twin Delayed Deep Deterministic Policy Gradient(TD3)
+- 제7장 : Trust Region Policy Optimization(TRPO)
+- 제8장 : Proximal Policy Optimization(PPO)
+- 제9장 : Soft Actor Critic(SAC)
 
