@@ -12,10 +12,22 @@
 - 제5장 : 몬테카를로
 - 제6장 : SARSA와 Q-learning
 - 제7장 : 깊은 Q-네트워크
-- 제8장 : Double DQN  ```diff(skip)```
-- 제9장 : Dueling DQN ```diff(skip)```
-- 제10장 : Max-PER ```diff(skip)```
-- 제11장 : SumTree - PER ```diff(skip)```
+- 제8장 : Double DQN  
+```diff
+-(skip)
+```
+- 제9장 : Dueling DQN
+```diff
+-(skip)
+```
+- 제10장 : Max-PER
+```diff
+-(skip)
+```
+- 제11장 : SumTree - PER
+```diff
+-(skip)
+```
 
 ---
 
@@ -28,7 +40,10 @@
 - 제1장 : REINFORCE-Monte Carlo Policy Gradient
 - 제2장 : REINFORCE-Baseline
 - 제3장 : Advantage Actor Critic(A2C)
-- 제4장 : Asynchronous Advantage Actor Critic(A3C) ```diff(skip)```
+- 제4장 : Asynchronous Advantage Actor Critic(A3C)
+```diff
+-(skip)
+```
 - 제5장 : Deep Deterministic Policy Gradient(DDPG)
 - 제6장 : Twin Delayed Deep Deterministic Policy Gradient(TD3)
 - 제7장 : Trust Region Policy Optimization(TRPO)
