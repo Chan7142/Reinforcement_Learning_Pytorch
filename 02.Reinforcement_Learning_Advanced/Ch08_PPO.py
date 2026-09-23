@@ -99,11 +99,11 @@ class PPO:
         actions = torch.cat(memory.actions)
         old_log_probs = torch.cat(memory.log_probs).detach()
 
-        for _ in range(num_epochs):
+        for _ in range(num_epochs): #32
             dataset = TensorDataset(states, actions, q_values, old_log_probs, advantages)
             dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-            for s_batch, a_batch, q_batch, old_lp_batch, adv_batch in dataloader:
+            for s_batch, a_batch, q_batch, old_lp_batch, adv_batch in dataloader: # 10번 정도 돔
                 dist = self.actor(s_batch)
                 cur_log_probs = dist.log_prob(a_batch)
 
@@ -211,7 +211,9 @@ def evaluate(agent, num_episodes: int = 10, record: bool = False):
         while not done:
             state_tensor = torch.FloatTensor(state)
             dist = agent.actor(state_tensor)
-            action = dist.sample().detach().cpu().numpy().flatten()
+            mean = dist.mean.detach().cpu().numpy().flatten()
+            action = mean
+            # action = dist.sample().detach().cpu().numpy().flatten()
 
             next_state, reward, terminated, truncated, info = env_eval.step(action)
             done = terminated or truncated
